@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServiceSite" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_ServiceSite1_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.15.153/ServiceSite.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.15.153/ServiceSite.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.15.153/ServiceSite.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfServiceSite" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ServiceSite_BadRequest1_InputMessage">
+    <wsdl:part name="parameters" element="tns:BadRequest1" />
+  </wsdl:message>
+  <wsdl:message name="ServiceSite_BadRequest1_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BadRequest1Response" />
+  </wsdl:message>
+  <wsdl:message name="ServiceSite_BadRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:BadRequest" />
+  </wsdl:message>
+  <wsdl:message name="ServiceSite_BadRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BadRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ServiceSite_SMSSend_InputMessage">
+    <wsdl:part name="parameters" element="tns:SMSSend" />
+  </wsdl:message>
+  <wsdl:message name="ServiceSite_SMSSend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SMSSendResponse" />
+  </wsdl:message>
+  <wsdl:message name="ServiceSite_GetCurrency_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrency" />
+  </wsdl:message>
+  <wsdl:message name="ServiceSite_GetCurrency_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrencyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSite">
+    <wsdl:operation name="BadRequest1">
+      <wsdl:input wsaw:Action="http://tempuri.org/ServiceSite/BadRequest1" message="tns:ServiceSite_BadRequest1_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ServiceSite/BadRequest1Response" message="tns:ServiceSite_BadRequest1_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BadRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/ServiceSite/BadRequest" message="tns:ServiceSite_BadRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ServiceSite/BadRequestResponse" message="tns:ServiceSite_BadRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SMSSend">
+      <wsdl:input wsaw:Action="http://tempuri.org/ServiceSite/SMSSend" message="tns:ServiceSite_SMSSend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ServiceSite/SMSSendResponse" message="tns:ServiceSite_SMSSend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrency">
+      <wsdl:input wsaw:Action="http://tempuri.org/ServiceSite/GetCurrency" message="tns:ServiceSite_GetCurrency_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ServiceSite/GetCurrencyResponse" message="tns:ServiceSite_GetCurrency_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ServiceSite" type="tns:ServiceSite">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BadRequest1">
+      <soap:operation soapAction="http://tempuri.org/ServiceSite/BadRequest1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BadRequest">
+      <soap:operation soapAction="http://tempuri.org/ServiceSite/BadRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SMSSend">
+      <soap:operation soapAction="http://tempuri.org/ServiceSite/SMSSend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrency">
+      <soap:operation soapAction="http://tempuri.org/ServiceSite/GetCurrency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ServiceSite1" type="tns:ServiceSite">
+    <wsp:PolicyReference URI="#BasicHttpBinding_ServiceSite1_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BadRequest1">
+      <soap:operation soapAction="http://tempuri.org/ServiceSite/BadRequest1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BadRequest">
+      <soap:operation soapAction="http://tempuri.org/ServiceSite/BadRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SMSSend">
+      <soap:operation soapAction="http://tempuri.org/ServiceSite/SMSSend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrency">
+      <soap:operation soapAction="http://tempuri.org/ServiceSite/GetCurrency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceSite">
+    <wsdl:port name="BasicHttpBinding_ServiceSite" binding="tns:BasicHttpBinding_ServiceSite">
+      <soap:address location="http://192.168.15.153/ServiceSite.svc/basic" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ServiceSite1" binding="tns:BasicHttpBinding_ServiceSite1">
+      <soap:address location="https://tst-web-app1.test.internal/ServiceSite.svc/secure" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

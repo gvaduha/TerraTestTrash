@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.terrasoft.ru/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.terrasoft.ru/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.terrasoft.ru/">
+      <s:element name="UploadApplication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GenericApplication" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GenericApplication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="GenericInfo" type="tns:GenericInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepositInfo" type="tns:DepositInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditInfo" type="tns:CreditInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegistrationDocument" type="tns:RegistrationDocument" />
+          <s:element minOccurs="0" maxOccurs="1" name="Addresses" type="tns:Addresses" />
+          <s:element minOccurs="0" maxOccurs="1" name="Communications" type="tns:Communications" />
+          <s:element minOccurs="0" maxOccurs="1" name="Employer" type="tns:Employer" />
+          <s:element minOccurs="0" maxOccurs="1" name="EarlierAppointedCredits" type="tns:ArrayOfEarlierAppointedCredit" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GenericInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicationType" type="tns:ApplicationTypes" />
+          <s:element minOccurs="1" maxOccurs="1" name="Name" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaternalName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gender" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Citizenship" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BirthDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlaceOfBirth" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsNotPublicPerson" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAgreeAuthorityTransfer" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDataAuthentic" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="INN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMScode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAgreeInsurance1" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAgreeInsurance2" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAgreeInsurance3" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstNameRomanType" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SecondNameRomanType" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardCategory" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RegistrationDateOnAddress" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRegEqualFactAddress" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSecondNameNOTChanged" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PreviousSecondName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContactPhone" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContactName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RelationDegree" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SecretWord" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaidenName" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecretQuestion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrivateSecretQuestion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecretQuestionAnswer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TPin" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BankingService" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrencyAsked" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrafficSource" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrafficType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdvertContent" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContentAdvertKeyWord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdvertCompanyProduct" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PageAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartnerMark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FillingStartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendingDateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ApplicationTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="credit" />
+          <s:enumeration value="deposit" />
+          <s:enumeration value="ets" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="DepositInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DepositLimitAsked" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepositTermAsked" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PercentPaymentMethod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PercentPayment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CreditInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MaritalStatus" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MinorChildrenNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DependentsNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Education" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAgreePersonalData" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreditLimitAsked" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreditTermAsked" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryAddress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreditOutgo" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="OtherOutgo" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AverageMonthlyPartnerIncome" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="PreviousCreditsQuantity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditPurpose" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AverageMonthlyIncome" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="IncomeCheckStatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsBankClient" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsBankWorker" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDepositOwner" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSalaryProjectClient" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="MilitaryStatus" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RegistrationDocument">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentSeries" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IssuedOn" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IssuedPlace" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IssuedBy" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IssueCode" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Addresses">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RegistrationAddress" type="tns:Address" />
+          <s:element minOccurs="0" maxOccurs="1" name="FactAddress" type="tns:Address" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkAddress" type="tns:Address" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Address">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LineCodeKLADR" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Country" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OKATO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Street" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StreetType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Building" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Building2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Building3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Office" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apartment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Communications">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="workPhone" type="tns:Communication" />
+          <s:element minOccurs="0" maxOccurs="1" name="addPhone" type="tns:Communication" />
+          <s:element minOccurs="0" maxOccurs="1" name="mainPhone" type="tns:Communication" />
+          <s:element minOccurs="0" maxOccurs="1" name="homePhone" type="tns:Communication" />
+          <s:element minOccurs="1" maxOccurs="1" name="mobilePhone" nillable="true" type="tns:Communication" />
+          <s:element minOccurs="1" maxOccurs="1" name="mail" nillable="true" type="tns:Communication" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Communication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Employer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AccountName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccountType" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LaborContractType" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccountSphere" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalWorkExperience" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastSeniority" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobTitle" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountCompanySite" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountCompanyEmployeesQty" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEarlierAppointedCredit">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EarlierAppointedCredit" nillable="true" type="tns:EarlierAppointedCredit" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EarlierAppointedCredit">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Bank" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OpenDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreditLimit" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaxLoanTerm" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UploadApplicationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="response" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Response">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsSuccess" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetApplicationParameters">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:ApplicationParameterToChoose" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ApplicationParameterToChoose">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParameterGroupNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetApplicationParametersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="response" type="tns:ParameterResponce" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParameterResponce">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="result" type="tns:Response" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetApplicationStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:ApplicationStatusRequest" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ApplicationStatusRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="tel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="smsCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetApplicationStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="response" type="tns:ApplicationStatusResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ApplicationStatusResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="result" type="tns:Response" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdApplication" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="results" type="tns:ArrayOfResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Result" nillable="true" type="tns:Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UploadApplicationSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadApplication" />
+  </wsdl:message>
+  <wsdl:message name="UploadApplicationSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetApplicationParametersSoapIn">
+    <wsdl:part name="parameters" element="tns:SetApplicationParameters" />
+  </wsdl:message>
+  <wsdl:message name="SetApplicationParametersSoapOut">
+    <wsdl:part name="parameters" element="tns:SetApplicationParametersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetApplicationStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetApplicationStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetApplicationStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetApplicationStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ExternalServiceSoap">
+    <wsdl:operation name="UploadApplication">
+      <wsdl:input message="tns:UploadApplicationSoapIn" />
+      <wsdl:output message="tns:UploadApplicationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetApplicationParameters">
+      <wsdl:input message="tns:SetApplicationParametersSoapIn" />
+      <wsdl:output message="tns:SetApplicationParametersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationStatus">
+      <wsdl:input message="tns:GetApplicationStatusSoapIn" />
+      <wsdl:output message="tns:GetApplicationStatusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ExternalServiceHttpGet" />
+  <wsdl:portType name="ExternalServiceHttpPost" />
+  <wsdl:binding name="ExternalServiceSoap" type="tns:ExternalServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadApplication">
+      <soap:operation soapAction="http://www.terrasoft.ru/UploadApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetApplicationParameters">
+      <soap:operation soapAction="http://www.terrasoft.ru/SetApplicationParameters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationStatus">
+      <soap:operation soapAction="http://www.terrasoft.ru/GetApplicationStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ExternalServiceSoap12" type="tns:ExternalServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadApplication">
+      <soap12:operation soapAction="http://www.terrasoft.ru/UploadApplication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetApplicationParameters">
+      <soap12:operation soapAction="http://www.terrasoft.ru/SetApplicationParameters" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationStatus">
+      <soap12:operation soapAction="http://www.terrasoft.ru/GetApplicationStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ExternalServiceHttpGet" type="tns:ExternalServiceHttpGet">
+    <http:binding verb="GET" />
+  </wsdl:binding>
+  <wsdl:binding name="ExternalServiceHttpPost" type="tns:ExternalServiceHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="ExternalService">
+    <wsdl:port name="ExternalServiceSoap" binding="tns:ExternalServiceSoap">
+      <soap:address location="http://192.168.15.149/BPMonline/ServiceModel/ExternalService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ExternalServiceSoap12" binding="tns:ExternalServiceSoap12">
+      <soap12:address location="http://192.168.15.149/BPMonline/ServiceModel/ExternalService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ExternalServiceHttpGet" binding="tns:ExternalServiceHttpGet">
+      <http:address location="http://192.168.15.149/BPMonline/ServiceModel/ExternalService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ExternalServiceHttpPost" binding="tns:ExternalServiceHttpPost">
+      <http:address location="http://192.168.15.149/BPMonline/ServiceModel/ExternalService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
